@@ -1,0 +1,223 @@
+/* ==========================================================================
+   ESTILOS ESPECÍFICOS - SECCIÓN DE CONTACTO
+   ========================================================================== */
+:root {
+    --bg-cream: #F9F5EB;
+    --primary-earth: #8B5E3C;
+    --primary-dark: #5C3D26;
+    --olive-light: #8E9A76;
+    --olive-dark: #606C38;
+    --text-dark: #2C2520;
+    --text-light: #F4EFE3;
+    --white: #FFFFFF;
+    --card-shadow: 0 8px 24px rgba(139, 94, 60, 0.08);
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background-color: var(--bg-cream);
+    color: var(--text-dark);
+    line-height: 1.6;
+}
+
+h1, h2, h3 {
+    font-family: 'Playfair Display', serif;
+    color: var(--primary-dark);
+}
+
+/* NAVBAR DE APOYO */
+.navbar {
+    background-color: var(--white);
+    box-shadow: 0 2px 15px rgba(0,0,0,0.04);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    padding: 0.8rem 2rem;
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-area {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+}
+
+.logo-placeholder {
+    width: 55px;
+    height: 55px;
+    background-color: var(--primary-earth);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-light);
+    font-family: 'Playfair Display', serif;
+    font-weight: bold;
+    font-size: 1.2rem;
+    border: 2px dashed var(--bg-cream);
+}
+
+.logo-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.logo-title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--primary-dark);
+}
+
+.nav-menu {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    list-style: none;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: var(--text-dark);
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: var(--transition);
+}
+
+.nav-link:hover, .nav-link.active {
+    color: var(--primary-earth);
+}
+
+/* CONTENEDOR DE PÁGINA CONTACTO */
+.contact-page-container {
+    max-width: 900px;
+    margin: 4rem auto;
+    padding: 0 2rem;
+}
+
+.contact-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.contact-header h2 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.contact-header p {
+    color: #666;
+    font-size: 1.1rem;
+}
+
+.info-card {
+    background-color: var(--white);
+    padding: 2.5rem;
+    border-radius: 16px;
+    box-shadow: var(--card-shadow);
+    margin-bottom: 3rem;
+    border-left: 5px solid var(--primary-earth);
+}
+
+.info-card h3 {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.info-detail-row {
+    margin-bottom: 1rem;
+    font-size: 1.05rem;
+}
+
+.info-detail-row strong {
+    color: var(--primary-dark);
+}
+
+/* BOTONES GRANDES ESTILO WHATSAPP ACCIÓN */
+.action-buttons-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.big-whatsapp-btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.8rem 2rem;
+    border-radius: 12px;
+    text-decoration: none;
+    color: var(--white);
+    font-weight: 700;
+    font-size: 1.2rem;
+    box-shadow: var(--card-shadow);
+    transition: var(--transition);
+}
+
+.big-whatsapp-btn:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.12);
+}
+
+.btn-compra-directa {
+    background-color: var(--olive-dark);
+    border-bottom: 5px solid #4a542b;
+}
+
+.btn-compra-directa:hover {
+    background-color: var(--olive-light);
+}
+
+.btn-consultas-mayor {
+    background-color: var(--primary-earth);
+    border-bottom: 5px solid #6d492e;
+}
+
+.btn-consultas-mayor:hover {
+    background-color: var(--primary-dark);
+}
+
+.btn-desc {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 400;
+    color: rgba(244, 239, 227, 0.85);
+    margin-top: 4px;
+}
+
+.btn-icon {
+    font-size: 2rem;
+    background-color: rgba(255,255,255,0.15);
+    width: 55px;
+    height: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+footer {
+    background-color: var(--primary-dark);
+    color: var(--text-light);
+    text-align: center;
+    padding: 2rem;
+    margin-top: 6rem;
+    font-size: 0.9rem;
+}

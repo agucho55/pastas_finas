@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Delicias Caseras - Fábrica de Pastas</title>
+
+    <link rel="stylesheet" href="i.css">
+</head>
+
+<body>
+
+    <header class="header">
+
+        <nav class="navbar">
+
+            <div class="d">
+
+                <img src="Logo.jpeg" alt="Logo Delicias Caseras" class="logo">
+
+                <div class="d-texto">
+                    <h1>Delicias Caseras</h1>
+                    <h2>Pastas Artesanales</h2>
+                </div>
+
+            </div>
+
+            <ul class="nav_links">
+
+                <li><a href="i.html">Inicio</a></li>
+
+                <li><a href="contacto2.html">Contacto</a></li>
+
+                <li><a href="#">Nosotros</a></li>
+
+                <li>
+                    <button class="cart-btn">
+                        🛒 <span class="cart-num">0</span>
+                    </button>
+                </li>
+
+            </ul>
+
+        </nav>
+
+    </header>
+
+
+    <div class="cart-dropdown" id="cart-dropdown">
+
+        <h3>🛒 Tu carrito</h3>
+
+        <div id="cart-content">
+
+            <p class="empty-cart">
+                Tu carrito está vacío
+            </p>
+
+            <a href="#productos" class="go-shopping">
+                Ir a comprar
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <section id="nosotros" class="seccion-nosotros">
+
+        <div class="nosotros-contenido">
+
+            <span class="tradicion">Tradición Familiar</span>
+
+            <h2>Nuestra Historia Tradicional</h2>
+
+            <p>
+                En <strong>Delicias Caseras</strong>, cada pieza de pasta lleva consigo el legado de generaciones de amor por la cocina auténtica.
+            </p>
+
+            <p>
+                No utilizamos conservantes ni aditivos químicos.
+            </p>
+
+        </div>
+
+        <div class="nosotros-imagen">
+
+            <div class="xx">
+
+                <p class="nosotros-foto-placeholder">
+                    [ Espacio para Foto Familiar o de Producción ]
+                </p>
+
+                <p class="nosotros-foto-sugerencia">
+                    Dimensión sugerida: 600x400px
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <main class="menu" id="productos">
+
+        <h3 class="titulo">Delicias Caseras</h3>
+
+        <div class="productos">
+
+
+            <article class="producto-card">
+
+                <img src="Fideos.jpg.jpeg" alt="Fideos caseros" class="producto-img">
+
+                <div class="producto-info">
+
+                    <h3>Fideos Caseros</h3>
+
+                    <p class="precio">$5000</p>
+
+                    <button class="añadir-tarjeta">
+                        Añadir al carrito
+                    </button>
+
+                </div>
+
+            </article>
+
+
+            <article class="producto-card">
+
+                <img src="Ravioles.jpg.jpeg" alt="Ravioles artesanales" class="producto-img">
+
+                <div class="producto-info">
+
+                    <h3>Ravioles Artesanales</h3>
+
+                    <p class="precio">$6500</p>
+
+                    <button class="añadir-tarjeta">
+                        Añadir al carrito
+                    </button>
+
+                </div>
+
+            </article>
+
+
+            <article class="producto-card">
+
+                <img src="Sorrentinos.jpg.jpeg" alt="Sorrentinos artesanales" class="producto-img">
+
+                <div class="producto-info">
+
+                    <h3>Sorrentinos Artesanales</h3>
+
+                    <p class="precio">$7500</p>
+
+                    <button class="añadir-tarjeta">
+                        Añadir al carrito
+                    </button>
+
+                </div>
+
+            </article>
+
+        </div>
+
+    </main>
+
+
+    <section id="compra" class="compra">
+
+        <div class="compra-contenedor">
+
+            <h3>Datos para la Entrega</h3>
+
+            <form>
+
+                <div class="datos-formulario">
+
+                    <label for="customer-name">
+                        Nombre Completo *
+                    </label>
+
+                    <input
+                        type="text"
+                        id="customer-name"
+                        required
+                        placeholder="Ej: Juan Pérez"
+                    >
+
+                </div>
+
+
+                <div class="contacto-formulario">
+
+                    <div class="datos-formulario">
+
+                        <label for="customer-phone">
+                            Teléfono *
+                        </label>
+
+                        <input
+                            type="tel"
+                            id="customer-phone"
+                            required
+                            placeholder="3863456789"
+                        >
+
+                    </div>
+
+
+                    <div class="datos-formulario">
+
+                        <label for="customer-address">
+                            Dirección *
+                        </label>
+
+                        <input
+                            type="text"
+                            id="customer-address"
+                            required
+                            placeholder="Calle y número"
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <div class="datos-formulario">
+
+                    <label for="customer-notes">
+                        Notas Especiales
+                    </label>
+
+                    <textarea
+                        id="customer-notes"
+                        rows="3"
+                        placeholder="Indicaciones"
+                    ></textarea>
+
+                </div>
+
+
+                <button type="submit" class="boton-orden">
+
+                    <span>
+                        Confirmar Pedido vía WhatsApp
+                    </span>
+
+                    📲
+
+                </button>
+
+            </form>
+
+        </div>
+
+
+        <div class="sumario-carrito">
+
+            <h3>Resumen del Pedido</h3>
+
+            <ul class="lista" id="cart-items-output"></ul>
+
+            <div class="total">
+
+                <span>Total General</span>
+
+                <span id="cart-total-display">$0</span>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <footer>
+        <p>&copy; 2026 Delicias Caseras - Tradición Familiar</p>
+    </footer>
+
+
+    <script src="carrito.js"></script>
+
+</body>
+</html>
