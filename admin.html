@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Administración - Delicias Caseras</title>
+    <link rel="stylesheet" href="i.css">
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+
+    <header class="header">
+        <nav class="navbar">
+            <div class="d">
+                <img src="Logo.jpeg" alt="Logo Delicias Caseras" class="logo">
+                <div class="d-texto">
+                    <h1>Delicias Caseras</h1>
+                    <h2>Panel de Control (ABM)</h2>
+                </div>
+            </div>
+            <ul class="nav_links">
+                <li><a href="i.html" class="link-tienda">Volver a la Tienda Pública 🛒</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="admin-container">
+        
+        <h2 class="admin-title">Gestión del Catálogo de Pastas</h2>
+
+        <form id="form-producto" class="form-inline">
+            
+            <input type="hidden" id="prod-id">
+
+            <div class="form-group">
+                <label for="prod-nombre">Nombre del Producto *</label>
+                <input type="text" id="prod-nombre" required placeholder="Ej: Ravioles de Verdura">
+            </div>
+
+            <div class="form-group">
+                <label for="prod-precio">Precio ($) *</label>
+                <input type="number" id="prod-precio" required min="0" placeholder="Ej: 5000">
+            </div>
+
+            <div class="form-group">
+                <label for="prod-unidad">Unidad de Venta *</label>
+                <select id="prod-unidad" required>
+                    <option value="kg">Por kilogramo (kg)</option>
+                    <option value="plancha">Por plancha</option>
+                    <option value="porción">Por porción</option>
+                    <option value="docena">Por docena</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="prod-stock">Stock Disponible *</label>
+                <input type="number" id="prod-stock" required min="0" placeholder="Ej: 15">
+            </div>
+
+            <div class="form-group">
+                <label for="prod-foto">Ruta de la Imagen *</label>
+                <input type="text" id="prod-foto" placeholder="Ej: Fideos.jpg">
+            </div>
+
+            <div class="btn-submit-container">
+                <button type="submit" class="btn-guardar-cambios">Guardar Producto</button>
+            </div>
+
+        </form>
+
+        <section class="tabla-responsiva">
+            <table class="tabla-gestion">
+                <thead>
+                    <tr>
+                        <th>Miniatura</th>
+                        <th>Producto / Unidad</th>
+                        <th>Precio Base</th>
+                        <th>Stock Actual</th>
+                        <th>Acciones de Control</th>
+                    </tr>
+                </thead>
+                <tbody id="tabla-productos-body"></tbody>
+            </table>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Delicias Caseras - Panel de Administración Privado</p>
+    </footer>
+
+    <script src="admin.js"></script>
+</body>
+</html>
