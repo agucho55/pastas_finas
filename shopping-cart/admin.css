@@ -1,0 +1,144 @@
+/* ==========================================================================
+   ESTILOS EXCLUSIVOS PARA EL PANEL DE ADMINISTRACIÓN (admin.css)
+   ========================================================================== */
+
+/* Contenedor de la interfaz privada */
+.admin-container {
+    max-width: 1200px;
+    margin: 3rem auto;
+    padding: 2.5rem;
+    background-color: var(--white);
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* Título de la sección */
+.admin-title {
+    margin-bottom: 2rem;
+    color: var(--primario-bordes);
+    border-bottom: 2px solid var(--fondo-heder);
+    padding-bottom: 0.5rem;
+}
+
+/* Enlace a la tienda pública en el menú */
+.link-tienda {
+    color: var(--text-titulos);
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+.link-tienda:hover {
+    color: var(--primario-palabras);
+}
+
+/* Formulario inteligente: Organiza los campos horizontalmente si hay espacio */
+.form-inline {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1.2rem;
+    margin-bottom: 3rem;
+    background-color: var(--bg-cream, #FAF6EE);
+    padding: 1.5rem;
+    border-radius: 10px;
+    border: 1px solid #DDD1C1;
+    align-items: flex-end; /* Alinea los inputs y el botón al fondo de su contenedor */
+}
+
+/* Contenedor individual de etiqueta + input */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+/* Contenedor específico del botón de envío */
+.btn-submit-container {
+    grid-column: auto;
+}
+
+/* Botón principal para añadir/actualizar registros */
+.btn-guardar-cambios {
+    background-color: var(--fondo-footer);
+    color: var(--white);
+    border: none;
+    padding: 0.85rem;
+    border-radius: 8px;
+    font-weight: 700;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.btn-guardar-cambios:hover {
+    background-color: var(--primario-bordes);
+    transform: translateY(-1px);
+}
+
+/* Contenedor con scroll lateral por si la tabla excede pantallas chicas */
+.tabla-responsiva {
+    overflow-x: auto;
+}
+
+/* Estructura general de la tabla ABM */
+.tabla-gestion {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+    background-color: var(--white);
+}
+
+.tabla-gestion th, 
+.tabla-gestion td {
+    padding: 14px 16px;
+    text-align: left;
+    border-bottom: 1px solid #DDD1C1;
+}
+
+/* Encabezado elegante utilizando el color verde de la marca */
+.tabla-gestion th {
+    background-color: var(--fondo-footer);
+    color: var(--white);
+    font-weight: 600;
+}
+
+/* Filas alternas para facilitar la lectura del administrador */
+.tabla-gestion tbody tr:hover {
+    background-color: rgba(249, 245, 235, 0.6);
+}
+
+/* Miniaturas de las imágenes cargadas */
+.img-preview {
+    width: 55px;
+    height: 55px;
+    object-fit: cover;
+    border-radius: 6px;
+    border: 1px solid rgba(0,0,0,0.1);
+}
+
+/* Botones de acción dentro de la tabla */
+.btn-action {
+    padding: 6px 14px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.85rem;
+    transition: opacity 0.2s;
+}
+
+.btn-action:hover {
+    opacity: 0.9;
+}
+
+/* Variación estructural: Editar (Marrón) */
+.btn-edit {
+    background-color: var(--primario-palabras);
+    color: white;
+    margin-right: 6px;
+}
+
+/* Variación estructural: Borrar (Rojo alerta) */
+.btn-delete {
+    background-color: #C94C4C;
+    color: white;
+}
