@@ -9,6 +9,7 @@
     --white: #fffffff1;
     --texto-producto: rgba(139, 94, 60, 0.15);
     
+    /* Variables que faltaban definir para que funcione tu código original: PD: sos gay */
     --olive-dark: #4F5D2F;
     --olive-light: #6E7F47;
     --bg-cream: #FAF6EE;
@@ -130,8 +131,7 @@ body {
     border-radius: 16px;
     overflow: hidden;
     box-shadow: var(--card-shadow);
-    height: 380px;
-    background-color: #E2D9C8;
+    height: 400px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -143,6 +143,29 @@ body {
     text-align: center;
     padding: 2rem;
 }
+
+.body_2 {
+    padding: 10px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--fondo-footer);
+    color: var(--text-titulos);
+    display: flex;
+    flex-direction: column;
+}
+.contenedor_formulario {
+    background-color: var(--bg-cream);
+    color: var(--fondo-heder);
+    font-style: italic;
+    text-align: center;
+    padding: 2rem;
+    box-shadow: 0 10px 20px var(--olive-light);
+}
+.contenedor_formulario img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50px;
+}
+
 .nosotros-foto-placeholder {
     font-size: 1.3rem;
     margin-bottom: 0.5rem;
@@ -441,97 +464,10 @@ input:focus, textarea:focus {
 .footer-logo p {
     margin: 5px 0 10px 0;
     font-size: 0.9rem;
+    display: flex;
+    justify-content: center;
 }
 
-.footer-socials a {
-    margin-right: 10px;
-    color: #1f2d3d;
-    text-decoration: none;
-    font-size: 1.2rem;
-}
-
-.footer-links h3,
-.footer-contact h3 {
-    margin-bottom: 10px;
-    font-size: 1.1rem;
-    font-weight: bold;
-}
-
-.footer-links ul {
-    list-style: none;
-    padding: 0;
-}
-
-.footer-links ul li {
-    margin-bottom: 5px;
-}
-
-.footer-links ul li a {
-    text-decoration: none;
-    color: #1f2d3d;
-    font-size: 0.9rem;
-}
-
-.footer-contact p {
-    margin: 5px 0;
-    font-size: 0.9rem;
-}
-
-.footer hr {
-    margin: 20px 0;
-    border: none;
-    border-top: 1px solid #1f2d3d;
-    opacity: 0.3;
-}
-
-.footer-bottom {
-    font-size: 0.75rem;
-    text-align: center;
-    color: #1f2d3d;
-    opacity: 0.7;
-}
-
-@media (max-width: 768px) {
-
-    .logo {
-        width: 60px;
-    }
-
-    .cart-btn {
-    padding: 5px 5px;
-    border-radius: 15px;
-    }
-
-
-    .nav_links {
-        gap: 15px;
-    }
-
-    .header {
-        padding: 15px 2%;
-    }
-    .navbar {
-        gap: 10px;
-        text-align: center;
-        border-radius: 15px;
-        padding: 5px;
-    }
-
-    .seccion-nosotros {
-        grid-template-columns: 1fr;
-    }
-
-    .productos {
-        grid-template-columns: 1fr;
-    }
-
-    .compra {
-        grid-template-columns: 1fr;
-        width: 100%;
-        gap: 3em;
-    }
-
-    .contacto-formulario {
-        grid-template-columns: 1fr;
-    }
+footer button {
+    background-color: #ddd;
 }
