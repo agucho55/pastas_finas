@@ -1,12 +1,12 @@
 :root {
-    --fondo-heder: #F9F5EB;
-    --primario-palabras: #8B5E3C;
+    --fondo-heder: #fdf4de;
+    --primario-palabras: #8b5e3cec;
     --primario-bordes: #5C3D26;
     --secundario-palabras: #8E9A76;
-    --fondo-footer: #606C38;
+    --fondo-footer: #606c38e9;
     --text-titulos: #2C2520;
     --text-footer: #F4EFE3;
-    --white: #FFFFFF;
+    --white: #fffffff1;
     --texto-producto: rgba(139, 94, 60, 0.15);
     
     /* Variables que faltaban definir para que funcione tu código original: PD: sos gay */
@@ -34,9 +34,7 @@ body {
 }
 
 .header {
-    background-color: var(--white);
     padding: 15px 5%;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     position: relative;
 }
 
@@ -46,7 +44,7 @@ body {
     align-items: center;
     background-color: var(--fondo-heder);
     padding: 10px 25px;
-    border-radius: 50px;
+    border-radius: 30px;
     position: static;
 }
 
@@ -177,6 +175,7 @@ body {
     font-size: 0.85rem;
     color: #666666;
 }
+
 .cart-btn{
     background: #8b0000;
     color: white;
@@ -283,9 +282,6 @@ body {
     background-color: var(--white);
     border-radius: 20px;
     overflow: hidden;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-    border: 1px solid rgba(92, 61, 38, 0.1);
-    transition: transform 0.3s;
 }
 
 .producto-card:hover {
@@ -300,7 +296,6 @@ body {
 
 .producto-info {
     padding: 20px;
-    text-align: center;
 }
 
 .producto-info h3 {
@@ -312,6 +307,7 @@ body {
     color: var(--primario-palabras);
     font-weight: bold;
     font-size: 1.3rem;
+    margin-top: 10px;
     margin-bottom: 15px;
 }
 
@@ -320,7 +316,7 @@ body {
     color: var(--white);
     border: none;
     padding: 10px 20px;
-    border-radius: 25px;
+    border-radius: 10px;
     font-weight: 600;
     cursor: pointer;
     width: 100%;
@@ -332,8 +328,8 @@ body {
 }
 
 .compra {
-    max-width: 1200px;
-    margin: 5rem auto;
+    width: 72%;
+    margin: 3rem auto;
     padding: 0 2rem;
     display: grid;
     grid-template-columns: 1.2fr 0.8fr;
@@ -377,7 +373,7 @@ input, textarea {
     padding: 0.75rem 1rem;
     border: 1px solid #DDD1C1;
     border-radius: 8px;
-    background-color: var(--bg-cream);
+    background-color: #faf6ee61;
     font-family: inherit;
     color: var(--text-dark);
     font-size: 0.95rem;
@@ -424,35 +420,49 @@ input:focus, textarea:focus {
     color: var(--primary-dark);
 }
 
-.boton-orden {
+.boton-borden {
     width: 100%;
-    background-color: var(--olive-dark);
-    color: var(--white);
-    border: none;
+    margin-top: 1.5rem;
     padding: 1rem;
-    border-radius: 8px;
-    font-size: 1.05rem;
+    border-radius: 12px;
+    border: 2px solid #5c3d268f;
+    background-color: transparent;
+    color: var(--primario-bordes);
+    font-size: 1rem;
     font-weight: 700;
     cursor: pointer;
-    margin-top: 1.5rem;
-    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.boton-borden span {
+    position: relative;
+}
+
+.footer {
+    background-color: #f5f5f5;
+    padding: 40px 20px;
+    font-family: Arial, sans-serif;
+    color: #1f2d3d;
+    margin-top: 80px;
+}
+
+.footer-container {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
 }
 
-.boton-orden:hover {
-    background-color: var(--olive-light);
-    transform: translateY(-2px);
+.footer-logo h1 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2.5rem;
+    margin: 0;
 }
 
-footer {
-    background-color: var(--fondo-footer);
-    color: var(--text-footer);
-    text-align: center;
-    padding: 15px;
-    margin-top: 40px;
+.footer-logo p {
+    margin: 5px 0 10px 0;
     font-size: 0.9rem;
     display: flex;
     justify-content: center;
