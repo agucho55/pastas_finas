@@ -5,9 +5,9 @@
 // PROCEDIMIENTO 1: Inicialización de la "Base de Datos" temporal
 // Si el administrador entra por primera vez, cargamos el menú por defecto.
 const productosPredeterminados = [
-    { id: 1, nombre: "Fideos Caseros", precio: 5000, unidad: "kg", stock: 15, foto: "Fideos.jpg" },
-    { id: 2, nombre: "Ravioles Artesanales", precio: 6500, unidad: "plancha", stock: 10, foto: "Ravioles.jpg" },
-    { id: 3, nombre: "Sorrentinos artesanales", precio: 7500, unidad: "plancha", stock: 8, foto: "Sorrentinos.jpg" }
+    { id: 1, nombre: "Fideos Caseros", precio: 5000, unidad: "kg", stock: 15, foto: "img/Fideos.jpg" },
+    { id: 2, nombre: "Ravioles Artesanales", precio: 6500, unidad: "plancha", stock: 10, foto: "img/Ravioles.jpg" },
+    { id: 3, nombre: "Sorrentinos artesanales", precio: 7500, unidad: "plancha", stock: 8, foto: "img/Sorrentinos.jpg" }
 ];
 
 // Intentamos leer datos previos del localStorage; si no existen, usamos el array de arriba.

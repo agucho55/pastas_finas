@@ -9,7 +9,7 @@
     --white: #FFFFFF;
     --texto-producto: rgba(139, 94, 60, 0.15);
     
-    /* Variables que faltaban definir para que funcione tu código original: */
+    /* Variables que faltaban definir para que funcione tu código original: PD: sos gay */
     --olive-dark: #4F5D2F;
     --olive-light: #6E7F47;
     --bg-cream: #FAF6EE;
@@ -134,7 +134,6 @@ body {
     overflow: hidden;
     box-shadow: var(--card-shadow);
     height: 400px;
-    background-color: #E2D9C8;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -146,6 +145,29 @@ body {
     text-align: center;
     padding: 2rem;
 }
+
+.body_2 {
+    padding: 10px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--fondo-footer);
+    color: var(--text-titulos);
+    display: flex;
+    flex-direction: column;
+}
+.contenedor_formulario {
+    background-color: var(--bg-cream);
+    color: var(--fondo-heder);
+    font-style: italic;
+    text-align: center;
+    padding: 2rem;
+    box-shadow: 0 10px 20px var(--olive-light);
+}
+.contenedor_formulario img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50px;
+}
+
 .nosotros-foto-placeholder {
     font-size: 1.3rem;
     margin-bottom: 0.5rem;
@@ -432,4 +454,10 @@ footer {
     padding: 15px;
     margin-top: 40px;
     font-size: 0.9rem;
+    display: flex;
+    justify-content: center;
+}
+
+footer button {
+    background-color: #ddd;
 }
