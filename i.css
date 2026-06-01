@@ -2,15 +2,17 @@
    1. VARIABLES DE ENTORNO (:ROOT)
    ========================================================================== */
 :root {
-    --fondo-heder: #fdf4de;
-    --primario-palabras: #8b5e3cec;
-    --primario-bordes: #5C3D26;
-    --secundario-palabras: #8E9A76;
-    --fondo-footer: #606c38e9;
-    --text-titulos: #2C2520;
-    --text-footer: #F4EFE3;
-    --white: #fffffff1;
-    --texto-producto: rgba(139, 94, 60, 0.15);
+    /* Paleta extraída directamente de tu logo */
+    --fondo-body: #F3EFE0;
+    --fondo-heder: #E6DCB8;
+    --primario-palabras: #604D38;
+    --primario-bordes: #604D38;
+    --secundario-palabras: #C29567;
+    --fondo-footer: #604D38;
+    --text-titulos: #604D38;
+    --text-footer: #F3EFE0;
+    --white: #FFFFFF;
+    --texto-producto: rgba(194, 149, 103, 0.15);
     
     --olive-dark: #4F5D2F;
     --olive-light: #6E7F47;
@@ -31,7 +33,7 @@
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #FAF8F5;
+    background-color: var(--fondo-body);
     color: var(--text-titulos);
     display: flex;
     flex-direction: column;
@@ -75,17 +77,19 @@ img {
 .logo {
     width: 70px;
     height: 70px;
-    border-radius: 50px;
+    border-radius: 50%;
     object-fit: cover;
+    border: 2px solid var(--primario-bordes);
 }
 
 .d-texto h1 {
-    font-size: 1.4rem;
+    font-size: 1.8rem;
     color: var(--primario-palabras);
+    line-height: 1.1;
 }
 
 .d-texto h2 {
-    font-size: 0.9rem;
+    font-size: 1.0rem;
     color: var(--secundario-palabras);
     font-weight: 500;
 }
@@ -93,19 +97,21 @@ img {
 .nav_links {
     display: flex;
     align-items: center;
-    gap: 30px;
+    gap: 25px;
     list-style: none;
 }
 
+/* Enlaces del menú limpios */
 .nav_links a {
     color: var(--text-titulos);
     text-decoration: none;
     font-weight: 600;
+    font-size: 1.05rem;
     transition: color 0.3s;
 }
 
 .nav_links a:hover {
-    color: var(--primario-palabras);
+    color: var(--secundario-palabras);
 }
 
 /* ==========================================================================
@@ -201,7 +207,7 @@ img {
 }
 
 .tradicion {
-    color: var(--olive-dark);
+    color: var(--secundario-palabras);
     text-transform: uppercase;
     font-weight: 700;
     font-size: 0.85rem;
@@ -214,12 +220,14 @@ img {
     font-size: 2.5rem;
     line-height: 1.2;
     margin-bottom: 1.5rem;
+    color: var(--primario-palabras);
 }
 
-.nosotros-content p {
-    color: #555;
+.nosotros-contenido p {
+    color: #4A4A4A;
     margin-bottom: 1.2rem;
     font-size: 1.05rem;
+    line-height: 1.6;
 }
 
 .nosotros-imagen {
@@ -231,23 +239,94 @@ img {
     display: flex;
     align-items: center;
     justify-content: center;
+    background-color: var(--white);
+    border: 1px solid rgba(0,0,0,0.05);
 }
 
 .nosotros-foto-placeholder {
-    font-size: 1.3rem;
-    margin-bottom: 0.5rem;
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
 }
 
 .nosotros-foto-sugerencia {
     font-size: 0.85rem;
     color: #666666;
+    margin-top: 10px;
 }
 
-.xx {
-    color: var(--primario-bordes);
-    font-style: italic;
+.cart-dropdown {
+    position: absolute;
+    top: 85px;
+    right: 5%;
+    width: 320px;
+    background: var(--white);
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    display: none;
+    z-index: 999;
+    border: 1px solid var(--texto-producto);
+}
+
+.cart-dropdown.active {
+    display: block;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 5px;
+}
+
+.empty-cart {
+    color: gray;
     text-align: center;
-    padding: 2rem;
+    font-size: 0.95rem;
+}
+
+.go-shopping {
+    display: block;
+    text-align: center;
+    margin-top: 15px;
+    color: var(--primario-palabras);
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.go-shopping:hover {
+    text-decoration: underline;
+}
+
+/* Botones de acción ovalados */
+.cart-btn {
+    background-color: var(--texto-producto);
+    border: 2px solid var(--primario-bordes);
+    color: var(--primario-palabras);
+    padding: 8px 18px;
+    border-radius: 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: transform 0.2s, background-color 0.3s;
+}
+
+.cart-btn:hover {
+    transform: scale(1.05);
+    background-color: rgba(194, 149, 103, 0.3);
+}
+
+.cart-num {
+    font-size: 0.85rem;
+    background-color: var(--primario-bordes);
+    color: var(--white);
+    padding: 2px 8px;
+    border-radius: 50px;
+    font-weight: bold;
 }
 
 /* ==========================================================================
@@ -263,8 +342,8 @@ img {
 
 .titulo {
     text-align: center;
-    font-size: 2rem;
-    margin-bottom: 30px;
+    font-size: 2.2rem;
+    margin-bottom: 40px;
     color: var(--primario-bordes);
 }
 
@@ -278,16 +357,18 @@ img {
     background-color: var(--white);
     border-radius: 20px;
     overflow: hidden;
-    transition: transform 0.3s ease;
+    box-shadow: var(--card-shadow);
+    transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .producto-card:hover {
     transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
 }
 
 .producto-img {
     width: 100%;
-    height: 200px;
+    height: 220px;
     object-fit: cover;
 }
 
@@ -296,44 +377,54 @@ img {
 }
 
 .producto-info h3 {
-    font-size: 1.2rem;
-    margin-bottom: 10px;
+    font-size: 1.25rem;
+    margin-bottom: 8px;
+    color: var(--text-titulos);
+}
+
+.product-desc {
+    font-size: 0.95rem;
+    color: #666;
+    line-height: 1.4;
+    min-height: 40px;
 }
 
 .precio {
     color: var(--primario-palabras);
-    font-weight: bold;
-    font-size: 1.3rem;
-    margin-top: 10px;
+    font-weight: 700;
+    font-size: 1.4rem;
+    margin-top: 15px;
     margin-bottom: 15px;
 }
 
 .añadir-tarjeta {
-    background-color: var(--fondo-footer);
+    background-color: var(--primario-bordes);
     color: var(--white);
     border: none;
-    padding: 10px 20px;
+    padding: 12px 20px;
     border-radius: 10px;
     font-weight: 600;
+    font-size: 1rem;
     cursor: pointer;
     width: 100%;
     transition: background-color 0.3s;
 }
 
 .añadir-tarjeta:hover {
-    background-color: var(--primario-bordes);
+    background-color: var(--secundario-palabras);
 }
 
 /* ==========================================================================
    7. SECCIÓN PROCESO DE COMPRA (FORMULARIO Y SUMARIO)
    ========================================================================== */
 .compra {
-    width: 72%;
+    width: 100%;
+    max-width: 1200px;
     margin: 3rem auto;
     padding: 0 2rem;
     display: grid;
     grid-template-columns: 1.2fr 0.8fr;
-    gap: 4rem;
+    gap: 3rem;
 }
 
 .compra-contenedor {
@@ -346,8 +437,9 @@ img {
 .compra-contenedor h3 {
     font-size: 1.8rem;
     margin-bottom: 1.5rem;
-    border-bottom: 2px solid var(--bg-cream);
+    border-bottom: 2px solid var(--fondo-body);
     padding-bottom: 0.8rem;
+    color: var(--primario-palabras);
 }
 
 .datos-formulario {
@@ -365,7 +457,7 @@ label {
     font-size: 0.9rem;
     font-weight: 600;
     margin-bottom: 0.4rem;
-    color: var(--text-dark);
+    color: var(--primario-palabras);
 }
 
 input, textarea {
@@ -373,7 +465,7 @@ input, textarea {
     padding: 0.75rem 1rem;
     border: 1px solid #DDD1C1;
     border-radius: 8px;
-    background-color: #faf6ee61;
+    background-color: #FAF8F5;
     font-family: inherit;
     color: var(--text-dark);
     font-size: 0.95rem;
@@ -384,7 +476,7 @@ input:focus, textarea:focus {
     outline: none;
     border-color: var(--primario-palabras);
     background-color: var(--white);
-    box-shadow: 0 0 0 3px rgba(139, 94, 60, 0.1);
+    box-shadow: 0 0 0 3px rgba(96, 77, 56, 0.1);
 }
 
 .sumario-carrito {
@@ -393,7 +485,7 @@ input:focus, textarea:focus {
     border-radius: 16px;
     box-shadow: var(--card-shadow);
     align-self: start;
-    border: 1px dashed var(--primario-bordes); /* Corregida variable inexistente */
+    border: 1px dashed var(--primario-bordes);
 }
 
 .sumario-carrito h3 {
@@ -426,7 +518,7 @@ input:focus, textarea:focus {
     margin-top: 1.5rem;
     padding: 1rem;
     border-radius: 12px;
-    border: 2px solid #5c3d268f;
+    border: 2px solid var(--primario-bordes);
     background-color: transparent;
     color: var(--primario-bordes);
     font-size: 1rem;
@@ -515,11 +607,9 @@ input:focus, textarea:focus {
     margin: 0;
 }
 
-.footer-logo p {
-    margin: 5px 0 10px 0;
-    font-size: 0.9rem;
-    display: flex;
-    justify-content: center;
+.boton-borden:hover {
+    background-color: var(--primario-bordes);
+    color: var(--white);
 }
 
 footer button {
