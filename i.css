@@ -1,6 +1,3 @@
-/* ==========================================================================
-   1. VARIABLES DE ENTORNO (:ROOT)
-   ========================================================================== */
 :root {
     /* Paleta extraída directamente de tu logo */
     --fondo-body: #F3EFE0;
@@ -343,7 +340,7 @@ img {
 .titulo {
     text-align: center;
     font-size: 2.2rem;
-    margin-bottom: 40px;
+    margin-bottom: 30px;
     color: var(--primario-bordes);
 }
 
@@ -452,6 +449,11 @@ img {
     gap: 1rem;
 }
 
+.user {
+    display: flex;
+    padding: 5px;
+}
+
 label {
     display: block;
     font-size: 0.9rem;
@@ -551,7 +553,7 @@ input:focus, textarea:focus {
 
 .contenedor_formulario {
     width: 100%;
-    max-width: 400px; /* Cambiado a max-width para que se adapte a celulares */
+    max-width: 450px; /* Cambiado a max-width para que se adapte a celulares */
     min-height: 500px;
     background-color: var(--bg-cream);
     color: var(--text-titulos); /* Ajustado para que el texto sea legible sobre crema */
@@ -572,13 +574,13 @@ input:focus, textarea:focus {
     background-color: var(--fondo-footer);
     color: var(--white);
     border: none;
-    padding: 10px 20px;
+    padding: 12px 20px;
     border-radius: 10px;
     font-weight: 600;
     cursor: pointer;
     width: 100%;
     transition: background-color 0.3s;
-    margin-top: 10px;
+    margin-top: 15px;
 }
 
 /* ==========================================================================
