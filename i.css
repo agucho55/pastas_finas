@@ -1,3 +1,6 @@
+/* ==========================================================================
+   1. VARIABLES DE ENTORNO (:ROOT)
+   ========================================================================== */
 :root {
     /* Paleta extraída directamente de tu logo */
     --fondo-body: #F3EFE0;
@@ -19,6 +22,9 @@
     --transition: all 0.3s ease;
 }
 
+/* ==========================================================================
+   2. REGLAS GENERALES Y RESETS
+   ========================================================================== */
 * {
     margin: 0;
     padding: 0;
@@ -34,12 +40,20 @@ body {
     min-height: 100vh;
 }
 
-/* Header fijo arriba con lectura limpia */
+/* Asegura que las imágenes no desborden sus contenedores en móviles */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* ==========================================================================
+   3. HEADER Y NAVEGACIÓN (NAVBAR)
+   ========================================================================== */
 .header {
     padding: 15px 5%;
-    position: sticky; 
-    top: 0;           
-    z-index: 100;    
+    position: sticky; /* <- Hace la magia */
+    top: 0;           /* <- Le dice que se pegue justo arriba de todo */
+    z-index: 1000;    /* <- Capa flotante alta para que pase por encima de las fotos y productos */
 }
 
 .navbar {
@@ -49,8 +63,10 @@ body {
     background-color: var(--fondo-heder);
     padding: 10px 25px;
     border-radius: 30px;
-    box-shadow: var(--card-shadow);
+    position: static;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08); /* <- Sombra sutil para el efecto flotante */
 }
+
 
 .d {
     display: flex;
@@ -98,6 +114,84 @@ body {
     color: var(--secundario-palabras);
 }
 
+/* ==========================================================================
+   4. CARRITO DE COMPRAS (BOTÓN Y DROPDOWN)
+   ========================================================================== */
+.cart-btn {
+    background-color: var(--texto-producto);
+    border: 2px solid var(--primario-bordes);
+    padding: 8px 18px;
+    border-radius: 20px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: transform 0.2s, background-color 0.3s;
+}
+
+.cart-btn:hover {
+    transform: scale(1.05);
+    background-color: rgba(139, 94, 60, 0.25);
+}
+
+.cart-num {
+    font-size: 0.9rem;
+    background-color: var(--primario-bordes);
+    color: var(--white);
+    padding: 2px 8px;
+    border-radius: 50px;
+    font-weight: bold;
+}
+
+.cart-dropdown {
+    position: absolute;
+    top: 90px;
+    right: 0px;
+    width: 300px;
+    background: white;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    display: none;
+    z-index: 999;
+    max-height: 400px;  /* <- Le pones un límite para que no se vaya al infinito */
+    overflow-y: auto;   /* <- Si se pasa de los 400px, crea un scroll propio adentro de la cajita */
+}
+
+.cart-dropdown.active {
+    display: block;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 5px;
+}
+
+.empty-cart {
+    color: gray;
+    text-align: center;
+}
+
+.go-shopping {
+    display: block;
+    text-align: center;
+    margin-top: 10px;
+    color: #8b0000;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.go-shopping:hover {
+    text-decoration: underline;
+}
+
+/* ==========================================================================
+   5. SECCIÓN NOSOTROS
+   ========================================================================== */
 .seccion-nosotros {
     max-width: 1200px;
     margin: 4rem auto;
@@ -147,41 +241,6 @@ body {
     justify-content: center;
     background-color: var(--white);
     border: 1px solid rgba(0,0,0,0.05);
-}
-
-.xx {
-    color: var(--primario-bordes);
-    font-style: italic;
-    text-align: center;
-    padding: 2rem;
-}
-
-.body_2 {
-    padding: 30px 10px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: var(--fondo-footer);
-    color: var(--text-footer);
-    display: flex;
-    flex-direction: column;
-}
-
-.contenedor_formulario {
-    background-color: var(--bg-cream);
-    color: var(--primario-palabras);
-    font-style: italic;
-    text-align: center;
-    padding: 2rem;
-    border-radius: 12px;
-    box-shadow: var(--card-shadow);
-    max-width: 600px;
-    margin: 0 auto;
-}
-
-.contenedor_formulario img {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    margin-bottom: 15px;
 }
 
 .nosotros-foto-placeholder {
@@ -270,6 +329,9 @@ body {
     font-weight: bold;
 }
 
+/* ==========================================================================
+   6. SECCIÓN CATÁLOGO / MENÚ DE PRODUCTOS
+   ========================================================================== */
 .menu {
     flex: 1;
     padding: 40px 5%;
@@ -352,6 +414,9 @@ body {
     background-color: var(--secundario-palabras);
 }
 
+/* ==========================================================================
+   7. SECCIÓN PROCESO DE COMPRA (FORMULARIO Y SUMARIO)
+   ========================================================================== */
 .compra {
     width: 100%;
     max-width: 1200px;
@@ -461,10 +526,168 @@ input:focus, textarea:focus {
     cursor: pointer;
     position: relative;
     overflow: hidden;
-    transition: var(--transition);
+    transition: all 0.3s ease;
+}
+
+.boton-borden span {
+    position: relative;
+}
+
+/* ==========================================================================
+   8. INTERFAZ LOGIN (PÁGINA SECUNDARIA)
+   ========================================================================== */
+.body_2 {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--fondo-footer);
+    color: var(--text-titulos);
+    text-align: center;
+    display: flex; /* Añadido para centrar el login perfectamente */
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.contenedor_formulario {
+    width: 100%;
+    max-width: 400px; /* Cambiado a max-width para que se adapte a celulares */
+    min-height: 500px;
+    background-color: var(--bg-cream);
+    color: var(--text-titulos); /* Ajustado para que el texto sea legible sobre crema */
+    font-style: italic;
+    text-align: center;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.contenedor_formulario img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50px;
+}
+
+.contenedor_formulario button {
+    background-color: var(--fondo-footer);
+    color: var(--white);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.3s;
+    margin-top: 10px;
+}
+
+/* ==========================================================================
+   9. FOOTER
+   ========================================================================== */
+.footer {
+    background-color: var(--fondo-heder);
+    padding: 40px 20px;
+    font-family: Arial, sans-serif;
+    color: #1f2d3d;
+    display: flex;
+    justify-content: center;
+    margin-top: auto; /* Empuja el footer abajo si hay poco contenido */
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.footer-logo h1 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2.5rem;
+    margin: 0;
 }
 
 .boton-borden:hover {
     background-color: var(--primario-bordes);
     color: var(--white);
+}
+
+footer button {
+    background-color: #ddd;
+}
+
+
+/* ==========================================================================
+   10. MEDIA QUERIES (SISTEMA RESPONSIVO)
+   ========================================================================== */
+
+/* --- TABLETS Y PANTALLAS MEDIANAS (Menos de 992px) --- */
+@media (max-width: 992px) {
+    .seccion-nosotros {
+        gap: 2rem;
+        margin: 2rem auto;
+    }
+    
+    .compra {
+        width: 90%;
+        gap: 2rem;
+    }
+}
+
+/* --- CELULARES Y DISPOSITIVOS MÓVILES (Menos de 768px) --- */
+@media (max-width: 768px) {
+    /* Navbar responsiva básica (Oculta o apila links) */
+    .navbar {
+        flex-direction: column;
+        gap: 15px;
+        border-radius: 20px;
+        padding: 15px;
+    }
+
+    .nav_links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+
+    .cart-dropdown {
+        right: 50%;
+        transform: translateX(50%); /* Centra el carrito desplegable en pantallas chicas */
+    }
+
+    /* Transformación de Grids de 2 columnas a 1 sola columna */
+    .seccion-nosotros {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        padding: 0 1.5rem;
+    }
+
+    .nosotros-contenido {
+        padding-right: 0;
+        text-align: center;
+    }
+
+    .nosotros-contenido h2 {
+        font-size: 2rem;
+    }
+
+    .nosotros-imagen {
+        height: 300px;
+    }
+
+    /* Formulario de Compra responsivo */
+    .compra {
+        grid-template-columns: 1fr; /* El sumario pasa abajo del formulario */
+        width: 100%;
+        padding: 0 1rem;
+        margin: 1.5rem auto;
+    }
+
+    .contacto-formulario {
+        grid-template-columns: 1fr; /* Inputs de nombre/apellido uno abajo del otro */
+    }
+
+    .compra-contenedor, .sumario-carrito {
+        padding: 1.5rem;
+    }
 }

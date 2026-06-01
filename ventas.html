@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finalizar Pedido - Delicias Caseras</title>
+    <link rel="stylesheet" href="i.css">
+</head>
+<body>
+
+    <header class="header">
+        <nav class="navbar">
+            <div class="d">
+                <img src="/img/Logo.jpg" alt="Logo Delicias Caseras" class="logo">
+                <div class="d-texto">
+                    <h1>Delicias Caseras</h1>
+                    <h2>Pastas Artesanales</h2>
+                </div>
+            </div>
+            <ul class="nav_links">
+                <li><a href="i.html">Agregar mas productos al carrito</a></li>
+                <li><a href="i.html" id="btn-cancelar">Cancelar compra</a></li>
+                <li>
+                    <button class="cart-btn">
+                        🛒 <span class="cart-num">0</span>
+                    </button>
+                </li>
+            </ul>
+        </nav>  
+
+        <div class="cart-dropdown" id="cart-dropdown">
+            <h3>🛒 Tu carrito</h3>
+            <div id="cart-content">
+                </div>
+        </div>
+    </header>
+
+    <section id="compra" class="compra">
+        <div class="compra-contenedor"> 
+            <h3>Datos para la Entrega</h3>
+            <form>
+                <div class="datos-formulario">
+                    <label for="customer-name">Nombre Completo *</label>
+                    <input type="text" id="customer-name" required placeholder="Ej: Juan Pérez">
+                </div>
+                
+                <div class="contacto-formulario">
+                    <div class="datos-formulario">
+                        <label for="customer-phone">Teléfono de Contacto *</label>
+                        <input type="tel" id="customer-phone" required placeholder="Ej: 3863456789">
+                    </div>
+                    <div class="datos-formulario">
+                        <label for="customer-address">Dirección de Entrega *</label>
+                        <input type="text" id="customer-address" required placeholder="Calle, Número o Barrio">
+                    </div>
+                </div>
+
+                <div class="datos-formulario">
+                    <label for="customer-notes">Notas Especiales / Indicaciones</label>
+                    <textarea id="customer-notes" rows="3" placeholder="Ej: Tocar timbre de planta alta, etc."></textarea>
+                </div>
+
+                <button type="submit" class="boton-borden">
+                    <span>Confirmar Pedido vía WhatsApp</span>
+                </button>
+            </form>
+        </div>
+
+        <div class="sumario-carrito">
+            <h3>Resumen del Pedido</h3>
+            <ul class="lista" id="cart-items-output"></ul>
+
+            <div class="total">
+                <span>Total General</span>
+                <span id="cart-total-display">$0.00</span>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>&copy; 2026 Delicias Caseras - Tradición Familiar</p>
+    </footer>
+
+    <script src="/shopping-cart/carrito.js"></script>
+</body>
+</html>
