@@ -1,117 +1,161 @@
+/* ==========================================================================
+   LÓGICA GLOBAL DEL CARRITO DE COMPRAS Y PEDIDOS - DELICIAS CASERAS
+   ========================================================================== */
+
+// --------------------------------------------------------------------------
+// 1. MAPEADO DE ELEMENTOS DEL DOM (NODOS)
+// --------------------------------------------------------------------------
+// Selectores compartidos entre la interfaz principal (i.html) y ventas.html
 const botonesAgregar = document.querySelectorAll(".añadir-tarjeta");
-
 const cartBtn = document.querySelector(".cart-btn");
-
 const cartDropdown = document.getElementById("cart-dropdown");
-
 const cartContent = document.getElementById("cart-content");
-
 const cartNumber = document.querySelector(".cart-num");
-
 const cartItemsOutput = document.getElementById("cart-items-output");
-
 const cartTotalDisplay = document.getElementById("cart-total-display");
 
-// Intentamos recuperar el carrito del localStorage. 
-// Como se guarda como texto, usamos JSON.parse para volver a convertirlo en un arreglo de JavaScript.
+// --------------------------------------------------------------------------
+// 2. ESTADO INICIAL DEL CARRITO (PERSISTENCIA CON LOCALSTORAGE)
+// --------------------------------------------------------------------------
+// Intentamos recuperar el carrito guardado en el navegador. 
+// Como localStorage solo guarda texto, usamos JSON.parse para convertirlo de nuevo en un Array.
 let carrito = JSON.parse(localStorage.getItem("mi_carrito")) || [];
 
-cartBtn.addEventListener("click", () => {
+// --------------------------------------------------------------------------
+// 3. EVENTOS DE INTERACCIÓN USER INTERFACE (UI)
+// --------------------------------------------------------------------------
 
-    cartDropdown.classList.toggle("active");
+// Desplegar/Ocultar el menú lateral o flotante del carrito
+if (cartBtn) {
+    cartBtn.addEventListener("click", () => {
+        cartDropdown.classList.toggle("active");
+    });
+}
 
-});
-
+// Escuchador dinámico para capturar el clic en "Añadir al carrito"
 botonesAgregar.forEach((boton) => {
     boton.addEventListener("click", () => {
+        // Buscamos la tarjeta contenedora del producto más cercana
         const card = boton.closest(".producto-card");
         const nombre = card.querySelector("h3").textContent;
         const precioTexto = card.querySelector(".precio").textContent;
+        // Limpiamos el texto del precio eliminando signos usando expresiones regulares
         const precio = parseInt(precioTexto.replace(/[^0-9]/g, ""));
 
+        // Agregamos el objeto nuevo al final del listado en memoria
         carrito.push({ nombre, precio });
 
-        // --- NUEVO: Guardamos el carrito actualizado en el almacenamiento local ---
-        // (localStorage solo acepta texto plano, por eso usamos JSON.stringify)
+        // Guardamos los cambios inmediatamente en el localStorage
         localStorage.setItem("mi_carrito", JSON.stringify(carrito));
 
+        // Refrescamos la interfaz visual
         actualizarCarrito();
     });
 });
 
-function actualizarCarrito(){
-
-    cartNumber.textContent = carrito.length;
-    cartContent.innerHTML = "";
-
-    // 1. Validamos si el contenedor del output del formulario existe en la página actual
-    if (cartItemsOutput) {
-        cartItemsOutput.innerHTML = "";
+// --------------------------------------------------------------------------
+// 4. SISTEMA DE RENDERIZADO Y ACTUALIZACIÓN DINÁMICA
+// --------------------------------------------------------------------------
+function actualizarCarrito() {
+    // Sincronizamos el numerito flotante del botón del carrito con el tamaño del array
+    if (cartNumber) {
+        cartNumber.textContent = carrito.length;
     }
+    
+    // Limpiamos los contenedores antes de reescribirlos para evitar duplicados
+    if (cartContent) cartContent.innerHTML = "";
+    if (cartItemsOutput) cartItemsOutput.innerHTML = "";
 
-    if(carrito.length === 0){
+    // CONTROL DE CARRITO VACÍO: Si no hay elementos, mostramos avisos amigables
+    if (carrito.length === 0) {
+        if (cartContent) {
+            cartContent.innerHTML = `
+                <p class="empty-cart">Tu carrito está vacío</p>
+                <a href="i.html#productos" class="go-shopping">Ir a comprar</a>
+            `;
+        }
 
-        cartContent.innerHTML = `
-            <p class="empty-cart">
-                Tu carrito está vacío
-            </p>
-            <!-- CORRECCIÓN: Ahora apunta al archivo de inicio y a su sección de productos -->
-            <a href="i.html#productos" class="go-shopping">
-                Ir a comprar
-            </a>
-        `;
+        if (cartItemsOutput) {
+            cartItemsOutput.innerHTML = `<li class="empty-cart">No seleccionaste ningún producto.</li>`;
+        }
 
         if (cartTotalDisplay) {
             cartTotalDisplay.textContent = "$0";
         }
-
-        return;
+        return; // Interrumpimos la ejecución porque no hay nada que calcular
     }
 
+    // CONTROL DE CARRITO CON ELEMENTOS: Recorremos el arreglo e inyectamos el HTML
     let total = 0;
 
-    carrito.forEach((producto) => {
+    carrito.forEach((producto, index) => {
         total += producto.precio;
 
-        cartContent.innerHTML += `
-            <div class="cart-item">
-                <span>${producto.nombre}</span>
-                <span>$${producto.precio}</span>
-            </div>
-        `;
+        // Renderizado para el desplegable flotante (i.html)
+        // Agregamos un botón de borrado individual pasándole su índice (index)
+        if (cartContent) {
+            cartContent.innerHTML += `
+                <div class="cart-item" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                    <div>
+                        <span>${producto.nombre}</span> - 
+                        <span style="font-weight: bold;">$${producto.precio.toLocaleString()}</span>
+                    </div>
+                    <button type="button" class="btn-remove-item" onclick="eliminarItemCarrito(${index})" style="background:none; border:none; color:#C94C4C; cursor:pointer; font-size:1rem;">🗑️</button>
+                </div>
+            `;
+        }
 
-        // 3. Solo agregamos elementos a la lista del resumen si estamos en ventas.html
+        // Renderizado para el sumario/resumen del formulario de pago (ventas.html)
+        // También incluye el botón de borrado individual reutilizando el mismo index
         if (cartItemsOutput) {
             cartItemsOutput.innerHTML += `
-                <li>
-                    ${producto.nombre} - $${producto.precio}
+                <li style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                    <span>• ${producto.nombre} - $${producto.precio.toLocaleString()}</span>
+                    <button type="button" class="btn-remove-item" onclick="eliminarItemCarrito(${index})" style="background:none; border:none; color:#C94C4C; cursor:pointer; font-size:0.9rem; margin-left: 10px;">Quitar ❌</button>
                 </li>
             `;
         }
     });
 
-    // 4. Solo actualiza el costo total si el elemento existe en la pantalla
+    // Actualizamos el costo acumulado total en las pantallas que lo requieran
     if (cartTotalDisplay) {
-        cartTotalDisplay.textContent = `$${total}`;
+        cartTotalDisplay.textContent = `$${total.toLocaleString()}`;
     }
 }
 
-// Buscamos el formulario de la compra
-// Buscamos el formulario de la compra en ventas.html
+// --------------------------------------------------------------------------
+// 5. FUNCIÓN CRUCIAL: ELIMINAR UN ITEM ESPECÍFICO DEL CARRITO
+// --------------------------------------------------------------------------
+// Exponemos la función de manera global (window.) para que los botones dinámicos 
+// con el atributo "onclick" puedan llamarla desde cualquier vista (i.html o ventas.html)
+window.eliminarItemCarrito = function(index) {
+    // Removemos exactamente 1 elemento ubicado en la posición 'index'
+    carrito.splice(index, 1);
+    
+    // Impactamos el cambio en la memoria local para mantener sincronizadas las pestañas
+    localStorage.setItem("mi_carrito", JSON.stringify(carrito));
+    
+    // Redibujamos la interfaz de inmediato
+    actualizarCarrito();
+};
+
+// --------------------------------------------------------------------------
+// 6. FORMULARIO DE COMPRA Y ENVÍO AUTOMATIZADO A WHATSAPP
+// --------------------------------------------------------------------------
 const formularioCompra = document.querySelector("#compra form");
 
 if (formularioCompra) {
     formularioCompra.addEventListener("submit", (e) => {
-        // 1. Evitamos que la página se recargue automáticamente
-        e.preventDefault(); 
+        e.preventDefault(); // Bloqueamos la recarga automática del navegador
 
-        // 2. Capturamos los datos que el cliente escribió en los inputs
+        // Capturamos los campos completados por el cliente
         const nombreClient = document.getElementById("customer-name").value;
         const telefonoClient = document.getElementById("customer-phone").value;
         const direccionClient = document.getElementById("customer-address").value;
-        const notasClient = document.getElementById("customer-notes").value || "Ninguna";
+        const notesElement = document.getElementById("customer-notes");
+        const notasClient = notesElement ? (notesElement.value || "Ninguna") : "Ninguna";
 
-        // 3. Empezamos a armar el texto del mensaje
+        // Estructuración del mensaje estético usando negritas con asteriscos (*) para WhatsApp
         let mensaje = `*NUEVO PEDIDO - DELICIAS CASERAS*\n\n`;
         mensaje += `*Datos de Entrega:*\n`;
         mensaje += `👤 *Nombre:* ${nombreClient}\n`;
@@ -121,53 +165,54 @@ if (formularioCompra) {
         mensaje += `----------------------------------\n`;
         mensaje += `🛒 *Detalle del Pedido:*\n`;
 
-        // 4. Recorremos el arreglo del carrito para listar los productos
         let total = 0;
         carrito.forEach((producto) => {
-            mensaje += `• ${producto.nombre} - $${producto.precio}\n`;
+            mensaje += `• ${producto.nombre} - $${producto.precio.toLocaleString()}\n`;
             total += producto.precio;
         });
 
         mensaje += `----------------------------------\n`;
-        mensaje += `💰 *TOTAL GENERAL:* $${total}\n\n`;
+        mensaje += `💰 *TOTAL GENERAL:* $${total.toLocaleString()}\n\n`;
         mensaje += `¡Muchas gracias! Espero mi pedido.`;
 
-        // 5. Tu número de teléfono (Usá código de país sin el +, ej: 549 para Argentina + tu celular con el 3)
-        // Ejemplo: 5493863xxxxxx
+        // Configuración del destino del WhatsApp del local (Monteros, Tucumán)
         const numeroTelefono = "5493863564018"; 
 
-        // 6. Codificamos el texto para la URL y armamos el enlace final
+        // Codificación segura del texto para insertarlo en parámetros URL
         const mensajeCodificado = encodeURIComponent(mensaje);
         const urlWhatsApp = `https://wa.me/${numeroTelefono}?text=${mensajeCodificado}`;
 
-        // 7. Vaciamos el carrito (memoria y almacenamiento local) ya que el pedido se envió
+        // Limpieza absoluta de la memoria local tras enviar el pedido
         carrito = [];
         localStorage.removeItem("mi_carrito");
 
-        // 8. Redirigimos al usuario a WhatsApp (abre la app o la web)
+        // Abrimos la interfaz de chat en pestaña externa
         window.open(urlWhatsApp, "_blank");
 
-        // Opcional: devolvemos al usuario al inicio de forma limpia
+        // Redirección de retorno limpio a la página de inicio
         window.location.href = "i.html";
     });
 }
 
-
-// Buscamos el botón de cancelar compra por su ID
+// --------------------------------------------------------------------------
+// 7. CANCELACIÓN TOTAL DE LA OPERACIÓN
+// --------------------------------------------------------------------------
 const botonCancelar = document.getElementById("btn-cancelar");
 
-// Si el botón existe en la página actual (ventas.html), le asignamos la función
 if (botonCancelar) {
     botonCancelar.addEventListener("click", () => {
-        // 1. Vaciamos el arreglo en la memoria de JavaScript
+        // Vaciamos el estado y borramos el registro local
         carrito = [];
-        
-        // 2. Eliminamos por completo el carrito guardado en el navegador
         localStorage.removeItem("mi_carrito");
         
-        // Opcional: Podés dejar un pequeño aviso antes de que redirija
+        // Actualizamos la vista y notificamos
+        actualizarCarrito();
         alert("Compra cancelada. El carrito se ha vaciado.");
     });
 }
 
+// --------------------------------------------------------------------------
+// INITIALIZATION
+// --------------------------------------------------------------------------
+// Ejecución inmediata al cargar el archivo para dibujar el estado actual
 actualizarCarrito();
