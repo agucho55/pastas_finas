@@ -448,26 +448,9 @@ input:focus, textarea:focus {
     margin-top: 80px;
 }
 
-.footer-container {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 20px;
+
+footer p{
+    text-align: center;
+    margin-bottom: 80px;
 }
 
-.footer-logo h1 {
-    font-family: 'Dancing Script', cursive;
-    font-size: 2.5rem;
-    margin: 0;
-}
-
-.footer-logo p {
-    margin: 5px 0 10px 0;
-    font-size: 0.9rem;
-    display: flex;
-    justify-content: center;
-}
-
-footer button {
-    background-color: #ddd;
-}
