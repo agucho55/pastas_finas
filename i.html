@@ -18,36 +18,36 @@
                 </div>
             </div>
             <ul class="nav_links">
+
                 <li><a href="i.html">Inicio</a></li>
                 <li><a href="/contac/contacto2.html">Contacto</a></li>
                 <li><a href="#">Nosotros</a></li>
                 <li>
                     <button class="cart-btn">
-                        🛒 <span class="cart-num">0</span>
+                        <svg xmlns="http://w3.org" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shopping-cart-icon lucide-shopping-cart"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
+                        <span class="cart-num">0</span>
+                    </button>
+                </li>
+                <li>
+                    <button class="cart-btn">
+                        <svg xmlns="http://w3.org" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-round-plus-icon lucide-user-round-plus"><path d="M2 21a8 8 0 0 1 13.292-6"/><circle cx="10" cy="8" r="5"/><path d="M19 16v6"/><path d="M22 19h-6"/></svg>
                     </button>
                 </li>
             </ul>
-        </nav>  
-    </header>
+        </nav>
+        
+        <div class="cart-dropdown" id="cart-dropdown">
+            <h3>🛒 Tu carrito</h3>
+    
+            <div id="cart-content"></div>
 
-
-    <div class="cart-dropdown" id="cart-dropdown">
-
-        <h3>🛒 Tu carrito</h3>
-
-        <div id="cart-content">
-
-            <p class="empty-cart">
-                Tu carrito está vacío
-            </p>
-
-            <a href="#productos" class="go-shopping">
-                Ir a comprar
+            <a href="ventas.html" style="display: block; text-decoration: none;">
+                <button class="añadir-tarjeta" style="margin-top: 15px; background-color: var(--primario-bordes);">
+                Iniciar Pago ➔
+                </button>
             </a>
-
         </div>
-
-    </div>
+    </header>
 
     <section href="#nosotros" id="nosotros" class="seccion-nosotros">
         <div class="nosotros-contenido">
@@ -58,8 +58,8 @@
         </div>
         <div class="nosotros-imagen">
         <div class="xx">
-        <p class="nosotros-foto-placeholder">[ Espacio para Foto Familiar o de Producción ]</p>
-        <p class="nosotros-foto-sugerencia">Dimensión sugerida: 600x400px - Estilo rústico.</p>
+        <img class="nosotros-foto-placeholder" src="/img/familiaPastas.jpg" alt="">
+        <p class="nosotros-foto-sugerencia">Nuestra familia ❤ </p>
         </div>
         </div>
     </section>
@@ -134,51 +134,9 @@
         </div>
     </section>
 
-    <section id="compra" class="compra">
+    
 
-        <div class="compra-contenedor"> 
-            <h3>Datos para la Entrega</h3>
-            <form>
-                <div class="datos-formulario">
-                    <label for="customer-name">Nombre Completo *</label>
-                    <input type="text" id="customer-name" required placeholder="Ej: Juan Pérez">
-                </div>
-                
-                <div class="contacto-formulario">
-                    <div class="datos-formulario">
-                        <label for="customer-phone">Teléfono de Contacto *</label>
-                        <input type="tel" id="customer-phone" required placeholder="Ej: 3863456789">
-                    </div>
-                    <div class="datos-formulario">
-                        <label for="customer-address">Dirección de Entrega *</label>
-                        <input type="text" id="customer-address" required placeholder="Calle, Número o Barrio">
-                    </div>
-                </div>
-
-                <div class="datos-formulario">
-                    <label for="customer-notes">Notas Especiales / Indicaciones</label>
-                    <textarea id="customer-notes" rows="3" placeholder="Ej: Tocar timbre de planta alta, etc."></textarea>
-                </div>
-
-                <button type="submit" class="boton-borden">
-                    <span>Confirmar Pedido vía WhatsApp</span>
-                </button>
-            </form>
-        </div>
-
-        <div class="sumario-carrito">
-            <h3>Resumen del Pedido</h3>
-            <ul class="lista" id="cart-items-output"></ul>
-
-        <div class="total">
-                <span>Total General</span>
-                <span id="cart-total-display">$0.00</span>
-        </div>
-
-        </div>
-    </section>
-
-    <footer>
+    <footer class="footer">
         <a href="login_admin.html"><button>Admin</button></a>
         <p>&copy; 2026 Delicias Caseras "Tradición Familiar" Todos los derechos reservados.
         </p>
