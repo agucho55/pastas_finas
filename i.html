@@ -28,7 +28,7 @@
                         <span class="cart-num">0</span>
                     </button>
                 </li>
-                <li>
+                <li  id="btnLogin">
                 <a href="login_admin.html">
                     <button class="cart-btn">
                         <svg xmlns="http://w3.org" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-round-plus-icon lucide-user-round-plus"><path d="M2 21a8 8 0 0 1 13.292-6"/><circle cx="10" cy="8" r="5"/><path d="M19 16v6"/><path d="M22 19h-6"/></svg>
@@ -145,5 +145,18 @@
     </footer>
 
     <script src="/shopping-cart/carrito.js"></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const logueado = localStorage.getItem("logueado");
+
+    if (logueado) {
+        const btn = document.getElementById("btnLogin");
+        if (btn) {
+            btn.style.display = "none";
+        }
+    }
+});
+</script>
 </body>
 </html>

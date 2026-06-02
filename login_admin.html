@@ -25,23 +25,24 @@
 
 
     <script>
-        document.getElementById("loginForm").addEventListener("submit", function(e) {
-            e.preventDefault();
-        
-            let usuario = document.querySelector("input[name='user']").value;
-            let password = document.querySelector("input[name='pass']").value;
-        
-            if (usuario === "admin" && password === "1234") {
-                window.location.href = "admin.html";
-            } 
-            else if (usuario === "usuario" && password === "1234") {
-                window.location.href = "i.html";
-            } 
-        
-            else {
-                alert("Usuario o contraseña incorrectos");
-            }
-        });
+document.getElementById("loginForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    let usuario = document.querySelector("input[name='user']").value;
+    let password = document.querySelector("input[name='pass']").value;
+
+    if (usuario === "admin" && password === "1234") {
+        localStorage.setItem("logueado", "admin");
+        window.location.href = "admin.html";
+    } 
+    else if (usuario === "usuario" && password === "1234") {
+        localStorage.setItem("logueado", "usuario");
+        window.location.href = "i.html";
+    } 
+    else {
+        alert("Usuario o contraseña incorrectos");
+    }
+});
         </script>
     </form>
 </div>
