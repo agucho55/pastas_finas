@@ -11,18 +11,39 @@
     <div class="contenedor_formulario">
         <img src="img/Logo.jpg" alt="Logo">
         <h2 class="titulo">BIENVENIDOS A LA ADMINISTRACION</h2>
-        <form action="admin.html" method="get">
+        <form id="loginForm">
             <div>
-                <label>Usuario</label>
-                <input type="text" name="user" required>    
+                <label class="user">Usuario</label>
+                <input type="text" name="user" required placeholder="ingrese el nombre de Usuario">    
             </div>
             <div>
-                <label>Contraseña</label>
-                <input type="password" name="pass" required>
+                <label class="user">Contraseña</label>
+                <input type="password" name="pass" required placeholder="ingrese la Contraseña">
             </div>
             <button type="submit">Ingresar</button>
-            
-        </form>
-    </div>
+
+
+    <script>
+        document.getElementById("loginForm").addEventListener("submit", function(e) {
+        e.preventDefault();
+
+        let usuario = document.querySelector("input[name='user']").value;
+        let password = document.querySelector("input[name='pass']").value;
+
+        if (usuario === "admin" && password === "1234") {
+        localStorage.setItem("logueado", "admin");
+        window.location.href = "admin.html";
+        } 
+        else if (usuario === "usuario" && password === "1234") {
+        localStorage.setItem("logueado", "usuario");
+        window.location.href = "i.html";
+        } 
+        else {
+        alert("Usuario o contraseña incorrectos");
+    }
+    });
+    </script>
+</form>
+</div>
 </body>
 </html>

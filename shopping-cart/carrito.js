@@ -53,6 +53,31 @@ botonesAgregar.forEach((boton) => {
     });
 });
 
+
+const btnVaciarCarrito = document.getElementById("btn-vaciar-carrito");
+
+if (btnVaciarCarrito) {
+    btnVaciarCarrito.addEventListener("click", () => {
+
+        if (carrito.length === 0) {
+            alert("El carrito ya está vacío.");
+            return;
+        }
+
+        const confirmar = confirm(
+            "¿Estás seguro de que quieres vaciar todo el carrito?"
+        );
+
+        if (confirmar) {
+            carrito = [];
+            localStorage.removeItem("mi_carrito");
+
+            actualizarCarrito();
+
+            alert("🗑️ Carrito vaciado correctamente.");
+        }
+    });
+}
 // --------------------------------------------------------------------------
 // 4. SISTEMA DE RENDERIZADO Y ACTUALIZACIÓN DINÁMICA
 // --------------------------------------------------------------------------
