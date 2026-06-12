@@ -6,6 +6,7 @@
     <title>ChatBot</title>
     <link rel="icon" href="Logo.png">
     <link rel="stylesheet" href="i.css">
+    <script src="login.js"></script>
 </head> 
 <body class="body_2">
     <div class="contenedor_formulario">
@@ -21,30 +22,29 @@
                 <input type="password" name="pass" required placeholder="ingrese la Contraseña">
             </div>
             <button type="submit">Ingresar</button>
-            
 
 
     <script>
-document.getElementById("loginForm").addEventListener("submit", function(e) {
-    e.preventDefault();
+        document.getElementById("loginForm").addEventListener("submit", function(e) {
+        e.preventDefault();
 
-    let usuario = document.querySelector("input[name='user']").value;
-    let password = document.querySelector("input[name='pass']").value;
+        let usuario = document.querySelector("input[name='user']").value;
+        let password = document.querySelector("input[name='pass']").value;
 
-    if (usuario === "admin" && password === "1234") {
+        if (usuario === "admin" && password === "1234") {
         localStorage.setItem("logueado", "admin");
         window.location.href = "admin.html";
-    } 
-    else if (usuario === "usuario" && password === "1234") {
+        } 
+        else if (usuario === "usuario" && password === "1234") {
         localStorage.setItem("logueado", "usuario");
         window.location.href = "i.html";
-    } 
-    else {
+        } 
+        else {
         alert("Usuario o contraseña incorrectos");
     }
-});
-        </script>
-    </form>
+    });
+    </script>
+</form>
 </div>
 </body>
 </html>
