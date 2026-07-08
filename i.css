@@ -616,6 +616,69 @@ input:focus, textarea:focus {
     transition: background-color 0.3s;
     margin-top: 15px;
 }
+/* ======================================================================*/
+/* Seccion de comentarios en la pagina */
+/* --- ESTILOS DE LA SECCIÓN DE COMENTARIOS --- */
+
+.comments-section {
+    background-color: var(--fondo-body); /* Un fondo gris muy claro para diferenciarlo del resto */
+    padding: 60px 20px;
+    font-family: sans-serif;
+}
+
+.comments-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.comments-title {
+    font-size: 2rem;
+    color: var(--text-dark);
+    margin-bottom: 40px;
+}
+
+/* Contenedor que alinea las tarjetas */
+.comments-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+/* Tarjeta individual de comentario */
+.comment-card {
+    background-color: var(--bg-cream);
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05); /* Sombra suave */
+    padding: 30px;
+    flex: 1 1 300px; /* Se estira y encoge, base de 300px */
+    max-width: 360px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 1px solid #eee;
+}
+
+/* Estilo para las estrellas */
+.stars {
+    color: #ffcc00; /* Color dorado para las estrellas */
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+}
+
+.comment-text {
+    font-style: italic;
+    color: var(--text-dark);
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.comment-author {
+    font-weight: bold;
+    color: var(--text-dark);
+    font-size: 0.9rem;
+}
 /* ==========================================================================
    9. FOOTER
    ========================================================================== */
